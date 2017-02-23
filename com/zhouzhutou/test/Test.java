@@ -1,6 +1,7 @@
 package com.zhouzhutou.test;
 
 import com.zhouzhutou.ADT.ArrayList;
+import com.zhouzhutou.ADT.LinkedList;
 
 import java.util.Iterator;
 
@@ -10,26 +11,60 @@ import java.util.Iterator;
 public class Test {
     public static void main(String[] args)
     {
-        ArrayList<Integer> list=new ArrayList<>();
+        /*ArrayList测试*/
+        System.out.println("ArrayList测试");
+        ArrayList<Integer> list1=new ArrayList<>();
         for(int i=0;i<10;i++)
-            list.add(new Integer(i));
-        for(int i=0;i<list.size();i++)
-            System.out.print(list.get(i)+" ");
+            list1.add(new Integer(i));
+        for(int i=0;i<list1.size();i++)
+            System.out.print(list1.get(i)+" ");
         System.out.println();
-        list.remove(3);
-        for(int i=0;i<list.size();i++)
-            System.out.print(list.get(i)+" ");
+        list1.remove(3);
+        for(int i=0;i<list1.size();i++)
+            System.out.print(list1.get(i)+" ");
         System.out.println();
-        Iterator<Integer> iterator=list.iterator();
-        while (iterator.hasNext())
+        Iterator<Integer> iterator1=list1.iterator();
+        while (iterator1.hasNext())
         {
-            Integer item=iterator.next();
+            Integer item=iterator1.next();
             System.out.print(item+" ");
             if(item%2==0)
-                iterator.remove();
+                iterator1.remove();
         }
         System.out.println();
-        for(int i=0;i<list.size();i++)
-            System.out.print(list.get(i)+" ");
+        for(int i=0;i<list1.size();i++)
+            System.out.print(list1.get(i)+" ");
+        System.out.println();
+        list1.set(0,11);
+        for(int i=0;i<list1.size();i++)
+            System.out.print(list1.get(i)+" ");
+        System.out.println();
+        System.out.println("LinkedList测试");
+        /*LinkedList测试*/
+        LinkedList<Integer> list2=new LinkedList<>();
+        for(int i=0;i<10;i++)
+            list2.add(i);
+        for(int i=0;i<list2.size();i++)
+            System.out.print(list2.get(i)+" ");
+        System.out.println();
+        list2.remove(4);
+        for(int i=0;i<list2.size();i++)
+            System.out.print(list2.get(i)+" ");
+        System.out.println();
+        list2.set(4,100);
+        for(int i=0;i<list2.size();i++)
+            System.out.print(list2.get(i)+" ");
+        System.out.println();
+        Iterator<Integer> iterator2=list2.iterator();
+        while (iterator2.hasNext()){
+            int i=iterator2.next();
+            System.out.print(i+" ");
+            if(i%2==0)
+                iterator2.remove();
+        }
+        System.out.println();
+        for(int i=0;i<list2.size();i++)
+            System.out.print(list2.get(i)+" ");
+
     }
 }
