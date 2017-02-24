@@ -2,6 +2,7 @@ package com.zhouzhutou.test;
 
 import com.zhouzhutou.ADT.ArrayList;
 import com.zhouzhutou.ADT.LinkedList;
+import com.zhouzhutou.ADT.Stack;
 
 import java.util.Iterator;
 
@@ -65,6 +66,17 @@ public class Test {
         System.out.println();
         for(int i=0;i<list2.size();i++)
             System.out.print(list2.get(i)+" ");
-
+        System.out.println();
+        /*stack测试*/
+        System.out.println("Stack测试");
+        Stack<Integer> stack=new Stack<>();
+        for(int i=0;i<10;i++)
+            stack.push(i);
+        System.out.println(stack.top());
+        int size=stack.size();
+        for(int i=0;i<size/2;i++)
+            System.out.print(stack.pop()+" ");
+        System.out.println();
+        System.out.println(stack.top());
     }
 }
