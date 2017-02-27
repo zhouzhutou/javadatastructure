@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  * Created by zhouzhutou on 2017/2/22.
  */
-public class Test {
+public class ADTTest {
     public static void main(String[] args)
     {
         /*ArrayList测试*/
