@@ -30,6 +30,22 @@ public class TreeTest {
         System.out.println();
         System.out.println("min element: "+binarySearchTree.findMin());
         System.out.println("max element: "+binarySearchTree.findMax());
+        binarySearchTree.clearTraverse();
+        binarySearchTree.remove(6);
+        binarySearchTree.preOrder(binarySearchTree.getRoot());
+        preOrderList=binarySearchTree.getTraverse();
+        System.out.println(preOrderList.size());
+        for(Integer i:preOrderList)
+            System.out.print(i+" ");
+        System.out.println();
+        binarySearchTree.clearTraverse();
+        binarySearchTree.remove(5);
+        binarySearchTree.preOrder(binarySearchTree.getRoot());
+        preOrderList=binarySearchTree.getTraverse();
+        System.out.println(preOrderList.size());
+        for(Integer i:preOrderList)
+            System.out.print(i+" ");
+        System.out.println();
 
     }
 }

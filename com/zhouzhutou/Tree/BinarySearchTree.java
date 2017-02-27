@@ -105,6 +105,14 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
+     * 清空traverse列表
+     */
+    public void clearTraverse()
+    {
+        traverse.clear();
+    }
+
+    /**
      * 插入节点
      * @param value
      */
@@ -130,6 +138,39 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             t.right=insert(value,t.right);
         else
             throw new RuntimeException("insert the same element");
+        return t;
+    }
+
+    /**
+     * 删除节点
+     * @param value
+     */
+    public void remove(T value)
+    {
+        root=remove(value,root);
+    }
+
+    /**
+     * 删除节点的递归实现
+     * @param value
+     * @param t
+     * @return BinaryNode<T>
+     */
+    private BinaryNode<T> remove(T value,BinaryNode<T> t)
+    {
+        if(t==null)
+            return null;
+        int com=value.compareTo(t.data);
+        if(com<0) {
+            t.left = remove(value, t.left);
+        }else if(com>0) {
+            t.right = remove(value, t.right);
+        } else if(t.left!=null && t.right!=null){
+            t.data=findMin(t.right).data;
+            t.right=remove(t.data,t.right);
+        }else{
+            t=t.left!=null ? t.left:t.right;
+        }
         return t;
     }
 
