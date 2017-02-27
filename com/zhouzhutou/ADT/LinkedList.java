@@ -152,11 +152,13 @@ public class LinkedList<T> implements Iterable<T>{
      */
     private T remove(Node<T> p)
     {
+        T value=p.data;
         p.prev.next=p.next;
         p.next.prev=p.prev;
+        p=null;
         size--;
         modCount++;
-        return p.data;
+        return value;
     }
 
     /**

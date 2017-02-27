@@ -2,6 +2,7 @@ package com.zhouzhutou.test;
 
 import com.zhouzhutou.ADT.ArrayList;
 import com.zhouzhutou.ADT.LinkedList;
+import com.zhouzhutou.ADT.Queue;
 import com.zhouzhutou.ADT.Stack;
 
 import java.util.Iterator;
@@ -78,5 +79,18 @@ public class Test {
             System.out.print(stack.pop()+" ");
         System.out.println();
         System.out.println(stack.top());
+        /*Queue测试*/
+        System.out.println("Queue测试");
+        Queue<Integer> queue=new Queue<>();
+        for(int i=0;i<10;i++)
+            queue.enqueue(i);
+        System.out.println("queue front: "+queue.front());
+        System.out.println("queue rear: "+queue.rear());
+        System.out.println("queuq size: "+queue.size());
+        for(int i=0;i<4;i++)
+            queue.dequeue();
+        System.out.println("queue front: "+queue.front());
+        System.out.println("queue rear: "+queue.rear());
+        System.out.println("queuq size: "+queue.size());
     }
 }
