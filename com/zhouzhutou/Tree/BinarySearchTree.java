@@ -2,6 +2,7 @@ package com.zhouzhutou.Tree;
 
 import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -56,19 +57,74 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     private BinaryNode<T> root;
 
     /**
+     * 定义比较器
+     */
+    private Comparator<? super T> comparator;
+
+    /**
      * 定义存储遍历二叉查找树结果的列表
      */
     private List<T> traverse;
+
+    /**
+     * 定义树的高度
+     */
+    private int height;
 
     /**
      * BinarySearchTree构造函数
      */
     public BinarySearchTree()
     {
-        root=null;
-        traverse=new ArrayList<>();
+        this(null);
     }
 
+    /**
+     * BinarySearchTree构造函数
+     */
+    public BinarySearchTree(Comparator<? super T> com)
+    {
+        root=null;
+        traverse=new ArrayList<>();
+        comparator=com;
+    }
+
+    /**
+     * 返回树的高度
+     * @return int
+     */
+    public int getHeight()
+    {
+        height=getHeight(root);
+        return height;
+    }
+
+    /**
+     * 计算树的高度的递归实现
+     * @param t
+     * @return int
+     */
+    private int getHeight(BinaryNode<T> t)
+    {
+        if(t==null)
+            return -1;
+        else
+            return 1+Math.max(getHeight(t.left),getHeight(t.right));
+    }
+
+    /**
+     * 比较两个节点的元素大小
+     * @param x
+     * @param y
+     * @return int
+     */
+    public int compare(T x, T y)
+    {
+        if(comparator==null)
+            return x.compareTo(y);
+        else
+            return comparator.compare(x,y);
+    }
     /**
      * 清空二叉查找树
      */
@@ -131,7 +187,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     {
         if(t==null)
             return new BinaryNode<T>(value);
-        int com=value.compareTo(t.data);
+        int com=compare(value,t.data);
         if(com<0)
             t.left=insert(value,t.left);
         else if(com>0)
@@ -160,7 +216,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     {
         if(t==null)
             return null;
-        int com=value.compareTo(t.data);
+        int com=compare(value,t.data);
         if(com<0) {
             t.left = remove(value, t.left);
         }else if(com>0) {
@@ -193,7 +249,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     private boolean contains(T x, BinaryNode<T> t)
     {
         if(t==null) return false;
-        int com=x.compareTo(t.data);
+        int com=compare(x,t.data);
         if(com==0)
             return true;
         if(com<0){

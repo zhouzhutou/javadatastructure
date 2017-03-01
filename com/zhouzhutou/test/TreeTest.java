@@ -1,5 +1,6 @@
 package com.zhouzhutou.test;
 
+import com.zhouzhutou.Tree.AVLTree;
 import com.zhouzhutou.Tree.BinarySearchTree;
 
 import java.util.LinkedList;
@@ -46,6 +47,48 @@ public class TreeTest {
         for(Integer i:preOrderList)
             System.out.print(i+" ");
         System.out.println();
-
+        /*AVLTree测试*/
+        System.out.println("AVLTree测试");
+        AVLTree<Integer> avlTree=new AVLTree<>();
+        for(int i=1;i<6;i++)
+            avlTree.insert(i);
+        System.out.println("contains 11: "+avlTree.contains(11));
+        System.out.println("contains 4: "+avlTree.contains(4));
+        avlTree.preOrder(avlTree.getRoot());
+        List<Integer> list=avlTree.getTraverse();
+        for(Integer i:list)
+            System.out.print(i+" ");
+        avlTree.clearTraverse();
+        System.out.println();
+        System.out.println("min element: "+avlTree.findMin());
+        System.out.println("max element: "+avlTree.findMax());
+        avlTree.insert(10);
+        avlTree.preOrder(avlTree.getRoot());
+        list=avlTree.getTraverse();
+        for(Integer i:list)
+            System.out.print(i+" ");
+        avlTree.clearTraverse();
+        System.out.println();
+        System.out.println("min element: "+avlTree.findMin());
+        System.out.println("max element: "+avlTree.findMax());
+        avlTree.insert(8);
+        avlTree.preOrder(avlTree.getRoot());
+        list=avlTree.getTraverse();
+        for(Integer i:list)
+            System.out.print(i+" ");
+        avlTree.clearTraverse();
+        System.out.println();
+        System.out.println("min element: "+avlTree.findMin());
+        System.out.println("max element: "+avlTree.findMax());
+        avlTree.remove(2);
+        avlTree.preOrder(avlTree.getRoot());
+        list=avlTree.getTraverse();
+        for(Integer i:list)
+            System.out.print(i+" ");
+        avlTree.clearTraverse();
+        System.out.println();
+        System.out.println("min element: "+avlTree.findMin());
+        System.out.println("max element: "+avlTree.findMax());
+        System.out.println("height: "+avlTree.getHeight());
     }
 }
