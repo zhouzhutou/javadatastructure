@@ -30,5 +30,12 @@ public class SortTest {
         for(Integer i:arr)
             System.out.print(i+" ");
         System.out.println();
+         /*快速排序测试*/
+        System.out.println("快速排序测试");
+        arr=new Integer[]{7,3,2,5,7,3,10};
+        sort.quickSort(arr);
+        for(Integer i:arr)
+            System.out.print(i+" ");
+        System.out.println();
     }
 }

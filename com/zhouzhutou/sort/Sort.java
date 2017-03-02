@@ -11,7 +11,7 @@ public class Sort<T extends Comparable<? super T>> {
      */
     public void insertSort(T nums[])
     {
-        if(nums==null || nums.length==0)
+        if(nums==null || nums.length==0 || nums.length==1)
             return;
         int j;
         for(int i=1;i<nums.length;i++)
@@ -29,7 +29,7 @@ public class Sort<T extends Comparable<? super T>> {
      */
     public void shellSort(T nums[])
     {
-        if(nums.length==0 || nums==null)
+        if(nums==null || nums.length==0 || nums.length==1)
             return ;
         int j;
         for(int gap=nums.length/2;gap>0;gap/=2)
@@ -50,6 +50,8 @@ public class Sort<T extends Comparable<? super T>> {
      */
     public void heapSort(T nums[])
     {
+        if(nums==null || nums.length==0 || nums.length==1)
+            return ;
         buildHeap(nums);
         int i=nums.length;
         while (i>1){
@@ -111,5 +113,71 @@ public class Sort<T extends Comparable<? super T>> {
             holeIndex=secondChild-1;
         }
         insertHeap(tmp,nums,holeIndex);
+    }
+
+    /**
+     * 交换数组中指定索引的两个元素
+     * @param nums
+     * @param left
+     * @param right
+     */
+    private void swap(T nums[],int left, int right)
+    {
+        T temp=nums[left];
+        nums[left]=nums[right];
+        nums[right]=temp;
+    }
+
+    /**
+     * 返回三个数中的最小值
+     * @param a
+     * @param b
+     * @param c
+     * @return T
+     */
+    public T median3(T a, T b, T c)
+    {
+        if(a.compareTo(b)<0) {
+            if (b.compareTo(c) < 0)
+                return b;
+            else if (a.compareTo(c) < 0)
+                return c;
+            else
+                return a;
+        }else{
+            if(b.compareTo(c)>0)
+                return b;
+            else if(a.compareTo(c)>0)
+                return c;
+            else
+                return a;
+        }
+    }
+
+    public void quickSort(T nums[])
+    {
+        quickSort(nums,0,nums.length-1);
+    }
+
+    public void quickSort(T nums[],int left,int right)
+    {
+        if(left<right) {
+            T privot = median3(nums[left], nums[right], nums[(left + right) / 2]);
+            int middle = partition(nums, left, right, privot);
+            quickSort(nums, left, middle - 1);
+            quickSort(nums, middle + 1, right);
+        }
+    }
+
+    public int partition(T nums[], int left, int right,T privot)
+    {
+        while (true){
+            while (nums[left].compareTo(privot)<0) ++left;
+            while (nums[right].compareTo(privot)>0) --right;
+            if(!(left<right))
+                return left;
+            swap(nums,left,right);
+            left++;
+        }
     }
 }
