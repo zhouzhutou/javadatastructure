@@ -169,7 +169,7 @@ public class Sort<T extends Comparable<? super T>> {
      * @param left
      * @param right
      */
-    public void quickSort(T nums[],int left,int right)
+    private void quickSort(T nums[],int left,int right)
     {
         if(left<right) {
             T privot = median3(nums[left], nums[right], nums[(left + right) / 2]);
@@ -187,7 +187,7 @@ public class Sort<T extends Comparable<? super T>> {
      * @param privot
      * @return int
      */
-    public int partition(T nums[], int left, int right,T privot)
+    private int partition(T nums[], int left, int right,T privot)
     {
         while (true){
             while (nums[left].compareTo(privot)<0) ++left;
@@ -197,5 +197,44 @@ public class Sort<T extends Comparable<? super T>> {
             swap(nums,left,right);
             left++;
         }
+    }
+
+    public void mergeSort(T[] nums)
+    {
+        T[] tempNums=(T[])new Comparable[nums.length];
+        mergeSort(nums,tempNums,0,nums.length-1);
+    }
+
+    private void mergeSort(T[] nums,T[] tempNums,int left,int right)
+    {
+        if(left<right){
+            int middle=(left+right)/2;
+            mergeSort(nums,tempNums,left,middle);
+            mergeSort(nums,tempNums,middle+1,right);
+            merge(nums,tempNums,left,middle+1,right);
+        }
+    }
+
+    private void merge(T[] nums,T[] tempNums,int left,int middle,int right)
+    {
+        int l=left,m=middle;
+        int k=left;
+        while (l<middle && m<=right)
+        {
+            if(nums[l].compareTo(nums[m])<0)
+                tempNums[k++]=nums[l++];
+            else
+                tempNums[k++]=nums[m++];
+        }
+        if(l==middle){
+            while (m<=right)
+                tempNums[k++]=nums[m++];
+        }
+        if(m==right+1){
+            while (l<middle)
+                tempNums[k++]=nums[l++];
+        }
+        for(int i=left;i<=right;i++)
+            nums[i]=tempNums[i];
     }
 }
