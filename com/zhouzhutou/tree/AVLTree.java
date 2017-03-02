@@ -1,4 +1,4 @@
-package com.zhouzhutou.Tree;
+package com.zhouzhutou.tree;
 
 import java.util.ArrayList;
 import java.util.Comparator;

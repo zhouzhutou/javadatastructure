@@ -1,7 +1,7 @@
 package com.zhouzhutou.test;
 
-import com.zhouzhutou.Tree.AVLTree;
-import com.zhouzhutou.Tree.BinarySearchTree;
+import com.zhouzhutou.tree.AVLTree;
+import com.zhouzhutou.tree.BinarySearchTree;
 
 import java.util.LinkedList;
 import java.util.List;
