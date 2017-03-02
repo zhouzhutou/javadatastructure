@@ -154,11 +154,21 @@ public class Sort<T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * 快速排序入口
+     * @param nums
+     */
     public void quickSort(T nums[])
     {
         quickSort(nums,0,nums.length-1);
     }
 
+    /**
+     * 递归完成快速排序
+     * @param nums
+     * @param left
+     * @param right
+     */
     public void quickSort(T nums[],int left,int right)
     {
         if(left<right) {
@@ -169,6 +179,14 @@ public class Sort<T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * 分割
+     * @param nums
+     * @param left
+     * @param right
+     * @param privot
+     * @return int
+     */
     public int partition(T nums[], int left, int right,T privot)
     {
         while (true){
