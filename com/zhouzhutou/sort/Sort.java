@@ -199,12 +199,23 @@ public class Sort<T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * 合并排序
+     * @param nums
+     */
     public void mergeSort(T[] nums)
     {
         T[] tempNums=(T[])new Comparable[nums.length];
         mergeSort(nums,tempNums,0,nums.length-1);
     }
 
+    /**
+     * 合并排序的递归实现
+     * @param nums
+     * @param tempNums
+     * @param left
+     * @param right
+     */
     private void mergeSort(T[] nums,T[] tempNums,int left,int right)
     {
         if(left<right){
@@ -215,6 +226,14 @@ public class Sort<T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * 合并的具体实现
+     * @param nums
+     * @param tempNums
+     * @param left
+     * @param middle
+     * @param right
+     */
     private void merge(T[] nums,T[] tempNums,int left,int middle,int right)
     {
         int l=left,m=middle;
