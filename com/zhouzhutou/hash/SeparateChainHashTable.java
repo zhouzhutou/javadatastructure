@@ -1,8 +1,5 @@
 package com.zhouzhutou.hash;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,7 +7,7 @@ import java.util.List;
  * Created by zhouzhutou on 2017/3/7.
  * 自定义HashTable类（分离链接法）
  */
-public class HashTable<T> {
+public class SeparateChainHashTable<T> {
 
     /**
      * 定义散列表
@@ -56,7 +53,7 @@ public class HashTable<T> {
     /**
      * 构造函数
      */
-    public HashTable(){
+    public SeparateChainHashTable(){
         this(DEFAULT_TABLE_SIZE);
     }
 
@@ -64,7 +61,7 @@ public class HashTable<T> {
      * 构造函数
      * @param size
      */
-    public HashTable(int size){
+    public SeparateChainHashTable(int size){
         lists=new LinkedList[nextPrime(size)];
         for(int i=0;i<lists.length;i++){
             lists[i]=new LinkedList<>();
