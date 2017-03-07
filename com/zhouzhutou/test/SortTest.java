@@ -44,5 +44,12 @@ public class SortTest {
         for(Integer i:arr)
             System.out.print(i+" ");
         System.out.println();
+        /*选择排序*/
+        System.out.println("选择排序");
+        arr=new Integer[]{2,4,1,78,3,5,65,85};
+        sort.selectSort(arr);
+        for(Integer i:arr)
+            System.out.print(i+" ");
+        System.out.println();
     }
 }

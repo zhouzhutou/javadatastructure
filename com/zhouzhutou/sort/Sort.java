@@ -256,4 +256,32 @@ public class Sort<T extends Comparable<? super T>> {
         for(int i=left;i<=right;i++)
             nums[i]=tempNums[i];
     }
+
+    /**
+     * 选择排序
+     * @param nums
+     */
+    public void selectSort(T[] nums)
+    {
+        for(int i=0;i<nums.length;i++)
+            selectSort(nums,i);
+    }
+
+    /**
+     * 选择排序具体实现
+     * @param nums
+     * @param i
+     */
+    public void selectSort(T[] nums,int i)
+    {
+        int length=nums.length;
+        T tmp=nums[i];
+        for(int j=length-1;j>i;j--){
+            if(nums[j].compareTo(tmp)<0)
+            {
+                swap(nums,i,j);
+                tmp=nums[j];
+            }
+        }
+    }
 }
